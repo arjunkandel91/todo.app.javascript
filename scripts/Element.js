@@ -42,5 +42,4 @@ export default {
 
     Title,
     Desc,
-
 }

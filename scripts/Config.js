@@ -4,5 +4,5 @@ const TaskList = [];
 
 export default {
     DarkMode,
-    TaskList,
+    TaskList
 }

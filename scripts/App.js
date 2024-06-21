@@ -14,7 +14,7 @@ setTimeout(() => {
 
     Element.Loader.style.display = 'none';
 
-}, 1);
+}, 500);
 
 window.addEventListener('offline', (e) => {
     Element.NetworkStatus.style.display = 'flex';
