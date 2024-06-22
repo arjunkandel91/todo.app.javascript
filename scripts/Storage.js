@@ -17,7 +17,13 @@ const SetTasks = (tasks) => {
     TaskStorage.setItem('task-list', JSON.stringify(tasks));
 };
 
+// clear storage
+const ClearTasks = () => {
+    TaskStorage.setItem('task-list', JSON.stringify([]));
+}
+
 export default {
     GetTasks,
     SetTasks,
+    ClearTasks,
 }

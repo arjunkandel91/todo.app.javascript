@@ -1,4 +1,3 @@
-
 :root {
     --site-background: #fff;
     --site-orange: #FF9800;
@@ -39,7 +38,7 @@
     margin: 0;
     padding: 0;
     list-style-type: none;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Quicksand", sans-serif;
     color: var(--site-black);
 }
 
@@ -49,15 +48,15 @@ body {
 
 /* Css codes for entire app */
 input:focus, h3:focus, p:focus {outline: none;}
-div.todo-app {max-width: 728px;margin: 0px auto;margin-top: 25px;}
+div.todo-app {max-width: 728px;margin: 0px auto;margin-top: 25px; padding-bottom: 35px;}
 
 /* header */
 header {display: flex;flex-direction: column;gap: 5px;margin-bottom: 25px;position: sticky;top: 0;background-color: var(--site-white);padding: 10px;}
 header h1 {font-size: 24pt;}
-header div.add-task {display: flex;flex-direction: row;gap: 7px;align-items: center;cursor: pointer;}
-header div.add-task img {width: 25px;height: 25px;opacity: 0.6;}
+header div.add-task {display: flex;flex-direction: row;gap: 10px;cursor: pointer;margin: 10px 0;align-items: center;}
+header div.add-task img {width: 25px;height: 25px;object-fit: contain;opacity: 0.5;border-radius: 50%;}
 header div.add-task p {font-size: 12pt;color: var(--site-soft-black);}
-header div.add-task:hover img {opacity: 1;}
+header div.add-task:hover img {opacity: 1;background-color: var(--site-orange);}
 header div.add-task:hover p {color: black;}
 
 /* write mode i.e. add new task */
@@ -77,39 +76,37 @@ ul.todo-list li div.action {margin-left: 15px;display: flex;flex-direction: row;
 ul.todo-list li div.action img {width: 25px;height: 25px;opacity: 0.5;cursor: pointer;}
 
 /* todo list -- complete */
-ul.todo-list li.complete div.radio {background-color: #4CAF50;}
+ul.todo-list li.complete div.radio {background-color: #919191;background-image: url(./../images/completed.svg);background-repeat: no-repeat;background-size: cover;border: 1px solid #919191;}
 ul.todo-list li.complete div.content h3 {text-decoration: line-through;}
-ul.todo-list li.complete div.content p {text-decoration: line-through;}
 
 /* todo list -- Edit mode */
 ul.todo-list li.edit {flex-direction: column;border: 1px solid #e5e5e5;padding: 25px 15px;border-radius: 7px;box-shadow: 0px 0px 40px #00000024;cursor: default;}
 ul.todo-list li.edit div.radio {display: none;}
 ul.todo-list li.edit div.action {display: none;}
-ul.todo-list li div.editaction  {display: none;justify-content: flex-end;padding: 15px 0;gap: 10px;border-top: 1px solid #b6b6b6;margin-top: 20px;}
+ul.todo-list li div.editaction  {display: none;justify-content: flex-end;padding: 15px 0;gap: 10px;border-top: 1px solid #e5efef;margin-top: 20px;}
 ul.todo-list li.edit div.editaction {display: flex;    }
-ul.todo-list li.edit div.editaction button {padding: 5px 15px;border-radius: 4px;border: none;}
-ul.todo-list li.complete div.action img:first-child {display: none;} 
+ul.todo-list li.edit div.editaction button {padding: 5px 15px;border-radius: 4px;border: none; cursor: pointer;}
 ul.todo-list li.edit h3 {cursor: text;}
 ul.todo-list li.edit p {cursor: text;}
 
 /* Input Box task input */
-div.input-box {margin: 15px 0;display: flex;flex-direction: column;gap: 10px;border: 1px solid #b6b6b6;padding: 15px;border-radius: 7px;display: none;}
+div.input-box {border: 1px solid #ddd;padding: 15px;display: flex;border-radius: 7px;flex-direction: column;width: calc(100% - 32px);display: none;margin: 10px 0;}
 div.input-box div.input {display: flex;flex-direction: column;gap: 5px;}
-div.input-box div.input input {padding: 5px;border: none;}
-div.input-box div.button {display: flex;justify-content: flex-end;gap: 8px;border-top: 1px solid #b6b6b6;padding-top: 15px;}
-div.input-box div.button button {border: none;padding: 5px 15px;font-size: 9pt;border-radius: 4px;cursor: pointer;}
-button.addbtn {background-color: var(--site-orange);color: var(--site-white);}
+div.input-box div.input input {border: none;padding: 7px;font-size: 11pt;}
+div.input-box div.button {display: flex;flex-direction: row;justify-content: flex-end;gap: 10px;border-top: 1px solid #ddd;padding-top: 15px;}
+div.input-box div.button button {font-size: 9pt;border: none;padding: 8px 15px;border-radius: 4px;color: #353535;cursor: pointer;}
+button.addbtn {background-color: var(--site-orange);color: white !important;}
 
 /* Empty task */
-div.empty-task {display: flex;flex-direction: column;justify-content: center;align-items: center;}
-div.empty-task img {width: 300px;}
-div.empty-task p {font-size: 12pt;color: #000000b0;}
+div.empty-task {flex-direction: column;gap: 15px;border: none;display: flex;justify-content: center;align-items: center;}
+div.empty-task img {width: 320px;}
+div.empty-task p {margin: 0;width: 50%;text-align: center;font-size: 11pt;line-height: 16pt;color: #737373;}
 
 /* Search element */
 div.app-search {display: flex;justify-content: space-between; align-items: center;}
 div.app-search img {width: 25px;height: 25px;object-fit: contain;cursor: pointer;opacity: 0.6;}
 div.app-search img:hover {opacity: 1;}
-div.search-box {display: flex;justify-content: space-between;align-items: center;border: 1px solid #9e9e9e;border-radius: 4px;display: none;}
+div.search-box {display: flex;justify-content: space-between;align-items: center;border: 1px solid #dddddd;border-radius: 4px;display: none;}
 div.search-box input {padding: 7px;border: none;}
 div.search-box img {width: 20px;height: 20px;padding: 8px;cursor: pointer; opacity: 0.6;}
 div.search-box img:hover {opacity: 1;}
@@ -123,7 +120,7 @@ div.networksts {position: absolute;background-color: black;border-radius: 5px;wi
 div.networksts p {color: white;}
 
 /* Notification */
-div.notification {position: absolute;background-color: black;border-radius: 5px;width: auto;bottom: 20px;left: 15px;border: 1px solid #b0b0b0;display: flex;flex-direction: row;justify-content: flex-start;gap: 8px;padding: 15px;}
+div.notification {position: absolute;background-color: black;border-radius: 5px;width: auto;bottom: 45px;left: 15px;border: 1px solid #b0b0b0;display: flex;flex-direction: row;justify-content: flex-start;gap: 8px;padding: 15px;}
 div.notification p {color: white;}
 
 /* delete modal */
@@ -131,7 +128,104 @@ div.delete-box {display: flex;flex-direction: column;background-color: white;pad
 div.delete-box div.close {align-self: flex-end;}
 div.delete-box div.close img {cursor: pointer;}
 div.delete-box div.action {display: flex;flex-direction: row;justify-content: flex-end;gap: 10px;}
-div.delete-box div.action button {padding: 5px 15px;border: none;}
+div.delete-box div.action button {padding: 5px 15px;border: none;cursor: pointer;}
 
 /* modal overlay */
 div.overlay {position: absolute;top: 0;left: 0;background-color: #0000003b;z-index: 9;bottom: 0;right: 0;display: none;}
+
+/* bottom information */
+div.info {width: calc(100% - 20px);height: auto;padding: 10px;background-color: black;position: fixed;bottom: 0;display: flex;flex-direction: row;gap: 10px;}
+div.info a {color: white;font-size: 9pt;cursor: pointer;text-decoration: none;}
+div.info a:first-child::after {content: "";display: inline-block;width: 4px;height: 4px;background-color: white;border-radius: 50%;margin-left: 8px;}
+div.info a:hover {text-decoration: underline;}
+
+@media screen and (max-width: 728px) {
+div.todo-app {width: 90%;}
+}
+
+/* Skeleton loader */
+/* Skeletion */
+.skgreydark {
+background: linear-gradient(270deg, #ebebeb, #d7d7d7, #ebebeb);
+background-size: 600% 600%;
+-webkit-animation: sk-grey-dark 2s ease infinite;
+-moz-animation: sk-grey-dark 2s ease infinite;
+-o-animation: sk-grey-dark 2s ease infinite;
+animation: sk-grey-dark 2s ease infinite;
+}
+
+@-webkit-keyframes sk-grey-dark {
+0%{background-position:0% 50%}
+50%{background-position:100% 51%}
+100%{background-position:0% 50%}
+}
+@-moz-keyframes sk-grey-dark {
+0%{background-position:0% 50%}
+50%{background-position:100% 51%}
+100%{background-position:0% 50%}
+}
+@-o-keyframes sk-grey-dark {
+0%{background-position:0% 50%}
+50%{background-position:100% 51%}
+100%{background-position:0% 50%}
+}
+@keyframes sk-grey-dark {
+0%{background-position:0% 50%}
+50%{background-position:100% 51%}
+100%{background-position:0% 50%}
+}
+
+.skgreylight {
+background: linear-gradient(270deg, #ebebeb, #e6e6e6, #ebebeb);
+background-size: 600% 600%;
+
+-webkit-animation: sk-grey-light 2s ease infinite;
+-moz-animation: sk-grey-light 2s ease infinite;
+-o-animation: sk-grey-light 2s ease infinite;
+animation: sk-grey-light 2s ease infinite;
+
+}
+
+@-webkit-keyframes sk-grey-light {
+0%{background-position:0% 50%}
+50%{background-position:100% 51%}
+100%{background-position:0% 50%}
+}
+@-moz-keyframes sk-grey-light {
+0%{background-position:0% 50%}
+50%{background-position:100% 51%}
+100%{background-position:0% 50%}
+}
+@-o-keyframes sk-grey-light {
+0%{background-position:0% 50%}
+50%{background-position:100% 51%}
+100%{background-position:0% 50%}
+}
+@keyframes sk-grey-light {
+0%{background-position:0% 50%}
+50%{background-position:100% 51%}
+100%{background-position:0% 50%}
+}
+
+
+
+ul.skeletion {width: 100%;height: auto;margin: 0px auto;position: relative;}
+ul.skeletion li {width: auto;height: auto;overflow: hidden;margin-bottom: 15px;}
+
+/* small images */
+ul.skeletion li .sk-image {width: 50px;height: 50px;margin-right: 10px;float: left;}
+
+/* small icons */
+ul.skeletion li .sk-icon {width: 20px;height: 20px;margin-right: 10px;float: left;}
+
+/* content */
+ul.skeletion li .sk-content {width: calc(100% - 60px);height: auto;float: left;}
+
+ul.skeletion li .sk-image span {display: block;width: 100%;height: 100%;border-radius: 100%;}
+ul.skeletion li .sk-icon span {display: block;width: 100%;height: 100%;border-radius: 100%;}
+
+ul.skeletion li .sk-content .sk-title {width: 70%;height: auto;margin-top: 6px;}
+ul.skeletion li .sk-content .sk-title span {display: block;width: 100%;height: 15px;border-radius: 25px;}
+
+ul.skeletion li .sk-content .sk-title-long {width: 95%;height: auto;margin-top: 10px;}
+ul.skeletion li .sk-content .sk-title-long span {display: block;width: 100%;height: 12px;border-radius: 25px}

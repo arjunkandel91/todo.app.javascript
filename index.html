@@ -5,11 +5,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Todo App</title>
 
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+        <link rel="manifest" href="favicon/site.webmanifest">
+        <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="shortcut icon" href="favicon/favicon.ico">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="msapplication-config" content="favicon/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+
+        <!-- Css Styles -->
         <link rel="stylesheet" href="./css/style.css">
 
+        <!-- Google Font -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     </head>
 
     <body>
@@ -58,7 +71,26 @@
             <!-- Task Loader -- loading state while loading the app and task list -->
             <!-- This is just an example but useful when we connect with back-end -->
             <div class="task-loader" style="display: none;">
-                <img src="./images/loader.gif"/>
+                <ul class="skeletion">
+                    <li>
+                        <div class="sk-icon"><span class="skgreylight"></span></div>
+                        <div class="sk-content">
+                            <div class="sk-title" style="width: 90%;"><span class="skgreydark"></span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="sk-icon"><span class="skgreylight"></span></div>
+                        <div class="sk-content">
+                            <div class="sk-title" style="width: 80%;"><span class="skgreydark"></span></div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="sk-icon"><span class="skgreylight"></span></div>
+                        <div class="sk-content">
+                            <div class="sk-title"><span class="skgreydark"></span></div>
+                        </div>
+                    </li>
+                </ul>
             </div>
             <!-- Task Loader /-->
 
@@ -91,6 +123,11 @@
             <p>Internet Disconnected</p>
         </div>
         <!-- Network status -->
+
+        <div class="info">
+            <a href="https://github.com/arjunkandel91/todo.app.javascript" target="_blank">This project has been developed with JavaScript</a>
+            <a href="#!" id="ClearStorage">Clear Storage</a>
+        </div>
 
         <!-- Todo App Script -->
         <script src="./scripts/App.js" type="module"></script>    

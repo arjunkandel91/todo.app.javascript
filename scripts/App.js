@@ -8,14 +8,13 @@ Element.Loader.style.display = 'flex';
 
 // data request time
 setTimeout(() => {
-
     Config.TaskList = Storage.GetTasks();
     Todo.RenderTasks(Config.TaskList);
 
     Element.Loader.style.display = 'none';
-
 }, 500);
 
+// Offline and Online status for internet connection check
 window.addEventListener('offline', (e) => {
     Element.NetworkStatus.style.display = 'flex';
 });
@@ -47,16 +46,80 @@ Element.AddTask.onclick = function () {
     Todo.ShowNotification ('Task Created');
 };
 
-// after dialog box to delete
+/**
+ * Search functionality search box show/hide
+ * search tasks as written on the input box
+*/
+
+SearchBtn.onclick = function () {
+    this.style.display = 'none';
+    SearchBox.style.display = 'flex';
+};
+
+CloseSearch.onclick = function () {
+    SearchBtn.style.display = 'block';
+    SearchBox.style.display = 'none';
+};
+
+// search functionality
+SearchTxt.onkeyup = function () {
+    let query = this.value.toUpperCase();
+    let list = TodoList.getElementsByTagName('li');
+    console.log (list);
+    
+    for (let i = 0; i < list.length; i++) {
+          var title = list[i].getElementsByTagName('h3')[0];
+          var desc = list[i].getElementsByTagName('p')[0];
+          title = title.innerText.toUpperCase();
+          desc = desc.innerText.toUpperCase();
+
+          if (title.includes(query) || desc.includes(query)) {
+                list[i].style.display = 'flex';
+          }else {
+                list[i].style.display = 'none';
+          }
+    }
+};
+
+// remove shown add task box, delete modal, search input
+// edit mode 
+// once escape key is pressed
+document.addEventListener('keyup', function (e) {
+    if (e.code == 'Escape') {
+        // close search box
+        SearchBtn.style.display = 'block';
+        SearchBox.style.display = 'none';
+
+        // close edit mode
+        Header.classList.remove('write');
+
+        // delete modal
+        Element.DeleteBox.style.display = 'none';
+        Element.Overlay.style.display = 'none';
+
+        // edit mode hide
+        Todo.CloseEditMode ();
+    }
+});
+
+// clear all the tasks in the storage
+ClearStorage.onclick = function () {
+    Storage.ClearTasks();
+};
+
+
+// after dialog modal to delete
 Element.DeleteBox.addEventListener('click', function (e) {
     let target = e.target;
     let button = target.getAttribute('data-button');
 
+    // delete close button
     if (button == 'delClose') {
         Element.DeleteBox.style.display = 'none';
         Element.Overlay.style.display = 'none';
     }
 
+    // delete okay button
     if (button == 'delOkay') {
         let TaskId = Element.DeleteBox.getAttribute('data-task-id');
         Todo.DeleteTask(TaskId);

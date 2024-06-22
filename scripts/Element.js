@@ -9,6 +9,7 @@ var CloseSearch = document.getElementById('CloseSearch');
 var SearchTxt = document.getElementById('SearchTxt');
 var DeleteBox = document.getElementById('deletebox');
 var Overlay = document.getElementById('overlay');
+var ClearStorage = document.getElementById('ClearStorage');
 
 var Notification = document.querySelector('.notification');
 var NetworkStatus = document.querySelector('.networksts');
@@ -33,6 +34,8 @@ export default {
     SearchTxt,
     DeleteBox,
     Overlay,
+    ClearStorage,
+
     Notification,
     NetworkStatus,
     Loader,
