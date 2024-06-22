@@ -37,13 +37,15 @@ Element.Cancel.onclick = function () {
 
 // Add task to the todo-list
 Element.AddTask.onclick = function () {
-    Todo.AddNewTask ();
+    let TaskAdded = Todo.AddNewTask ();
 
-    // save updated tasks to storage
-    Storage.SetTasks(Config.TaskList);
+    if (TaskAdded) {
+        // save updated tasks to storage
+        Storage.SetTasks(Config.TaskList);
 
-    // notification
-    Todo.ShowNotification ('Task Created');
+        // notification
+        Todo.ShowNotification ('Task Created');
+    }
 };
 
 /**
@@ -65,7 +67,6 @@ CloseSearch.onclick = function () {
 SearchTxt.onkeyup = function () {
     let query = this.value.toUpperCase();
     let list = TodoList.getElementsByTagName('li');
-    console.log (list);
     
     for (let i = 0; i < list.length; i++) {
           var title = list[i].getElementsByTagName('h3')[0];
@@ -191,12 +192,14 @@ TodoList.addEventListener('click', function (e) {
         title = li.getElementsByTagName('h3')[0].innerText;
         desc = li.getElementsByTagName('p')[0].innerText;
 
-        Todo.EditAndSaveTask (TaskId, title, desc);
+        let TaskEdited = Todo.EditAndSaveTask (TaskId, title, desc);
 
-        // save updated tasks to storage
-        Storage.SetTasks(Config.TaskList);
+        if (TaskEdited) {
+            // save updated tasks to storage
+            Storage.SetTasks(Config.TaskList);
 
-        // notification
-        Todo.ShowNotification ('Task Updated');
+            // notification
+            Todo.ShowNotification ('Task Updated');
+        }
     }
 });

@@ -12,13 +12,14 @@ const AddNewTask = () => {
     desc = Element.Desc.value;
 
     // simple validation
-    if (title.length <= 3 || desc.length <=3 ) {
-        alert('title and description are empty!')
-        return;
+    if (title.length <= 5 ) {
+        alert('Your task title is empty!')
+        return false;
     }
 
-    // new unique id
-    id = Config.TaskList.length + 1;
+    // new unique id -- simpler version
+    let Seconds = new Date().getMilliseconds();
+    id = Seconds + Config.TaskList.length + 1;
 
     // push newly created task to todo array
     Config.TaskList.push({
@@ -34,6 +35,8 @@ const AddNewTask = () => {
     Element.Desc.value = '';
     Element.Title.value = '';
     Element.Header.classList.toggle('write');
+
+    return true;
 };
 
 /**
@@ -65,11 +68,6 @@ const CompleteTask = (id) => {
     // loop to update the value 
     Config.TaskList.forEach(task => {
         if(task.id == id) task.completed = !task.completed;
-    });
-
-    // move completed task to the end of list
-    Config.TaskList.sort((a, b) => {
-        if (b.completed) return -1;
     });
 
     // render all tasks
@@ -106,6 +104,12 @@ const CloseEditMode = () => {
  * @returns {null} nothing to return
 */
 const EditAndSaveTask = (id, title, desc) => {
+    // simple validation
+    if (title.length <= 3 ) {
+        alert('Your task title is empty!')
+        return false;
+    }
+
     // find the selected task and update
     Config.TaskList.forEach(task => {
         if (task.id == id) {
@@ -117,6 +121,8 @@ const EditAndSaveTask = (id, title, desc) => {
 
     // render all tasks
     RenderTasks(Config.TaskList); 
+
+    return true;
 }
 
 // This function update the task list
