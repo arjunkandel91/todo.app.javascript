@@ -8,4 +8,4 @@
 This project is a straightforward to-do application crafted in JavaScript. It ensures tasks are preserved using web storage, and it's equipped with essential functionalities such as adding new tasks, deleting, updating, and marking tasks as complete.
 
 App Screenshot
-![todo-screenshot](https://github.com/arjunkandel91/todo.app.javascript/assets/45811982/419a4305-3c9a-4a1e-804b-01477c21d444)
+![Todo Screenshot](https://github.com/arjunkandel91/todo.app.javascript/assets/45811982/419a4305-3c9a-4a1e-804b-01477c21d444)
