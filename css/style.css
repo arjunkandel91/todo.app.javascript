@@ -79,7 +79,7 @@ ul.todo-list li div.action img {width: 25px;height: 25px;opacity: 0.5;cursor: po
 ul.todo-list li.complete div.radio {background-color: #919191;background-image: url(./../images/completed.svg);background-repeat: no-repeat;background-size: cover;border: 1px solid #919191;}
 ul.todo-list li.complete div.content h3 {text-decoration: line-through;}
 
-/* todo list -- Edit mode */
+/* todo list -- edit mode */
 ul.todo-list li.edit {flex-direction: column;border: 1px solid #e5e5e5;padding: 25px 15px;border-radius: 7px;box-shadow: 0px 0px 40px #00000024;cursor: default;}
 ul.todo-list li.edit div.radio {display: none;}
 ul.todo-list li.edit div.action {display: none;}
@@ -144,7 +144,7 @@ div.todo-app {width: 90%;}
 }
 
 /* Skeleton loader */
-/* Skeletion */
+/* Skeleton */
 .skgreydark {
 background: linear-gradient(270deg, #ebebeb, #d7d7d7, #ebebeb);
 background-size: 600% 600%;
