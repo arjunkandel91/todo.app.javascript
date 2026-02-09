@@ -3,7 +3,7 @@ import Element from "./Element.js";
 
 /**
  * This method create new task and push to Todo list
- * @returns {null}
+ * @returns {Boolean} returns true after adding task to the list and UI
 */
 
 const AddNewTask = () => {
@@ -28,7 +28,7 @@ const AddNewTask = () => {
         description: desc
     });
 
-    // render to the stage
+    // render to the UI
     RenderTasks(Config.TaskList);
     
     // empty input elements    
@@ -54,7 +54,7 @@ const DeleteTask = (id) => {
     // remove the selected task
     Config.TaskList.splice(taskIndex, 1);
 
-    // render all tasks
+    // render all tasks to the UI
     RenderTasks(Config.TaskList);
 };
 
@@ -65,7 +65,7 @@ const DeleteTask = (id) => {
 */
 
 const CompleteTask = (id) => {
-    // loop to update the value 
+    // loop to update the status 
     Config.TaskList.forEach(task => {
         if(task.id == id) task.completed = !task.completed;
     });
@@ -74,7 +74,12 @@ const CompleteTask = (id) => {
     RenderTasks(Config.TaskList); 
 };
 
-// init edit task
+/**
+ * this function will initiate the selected task to edit on UI
+ * @param {Number} id selected task to edit
+ * it will change the property of selected task [task.editMode = true], doing this and re-rendering to UI, ..
+ * will change the selected task, where user can edit the title and description
+ */
 const InitEditMode = (id) => {
     Config.TaskList.forEach(task => {
         if(task.id == id) task.editMode = true;
@@ -83,10 +88,9 @@ const InitEditMode = (id) => {
 
     // render all tasks
     RenderTasks(Config.TaskList); 
-
 };
 
-// close edit mode
+// This function will update the editMode property to false
 const CloseEditMode = () => {
     Config.TaskList.forEach(task => {
         task.editMode = false;
@@ -101,7 +105,7 @@ const CloseEditMode = () => {
  * @param {Number} id unique id of selected task to edit
  * @param {String} title updated title of the task
  * @param {String} desc updated description of the task
- * @returns {null} nothing to return
+ * @returns {Boolean} return true after updating the task
 */
 const EditAndSaveTask = (id, title, desc) => {
     // simple validation
@@ -129,10 +133,10 @@ const EditAndSaveTask = (id, title, desc) => {
 // It is called when task is deleted, updated, completed etc
 const RenderTasks = (tasks) => {
 
-    // empty the stage first
+    // empty the UI first
     Element.TodoList.innerHTML = '';
 
-    // loop and update accordingly using template literals
+    // iterate and update accordingly using template literals
     tasks.forEach(task => {        
         let li = `<li data-task-id="${task.id}" 
                 class="${ task.completed ? 'complete' : ''} ${ task.editMode ? 'edit' : ''}">
