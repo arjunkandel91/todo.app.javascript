@@ -1,12 +1,15 @@
+// import global configuration settings 
 import Config from './Config.js';
-import Element from './Element.js';
-import Todo from './Todo.js';
-import Storage from './Storage.js';
+import Element from './Element.js'; // html id elements
+import Todo from './Todo.js'; // task main functions
+import Storage from './Storage.js'; // local storage to store task
 
-// task loading state
+// task loading state element, show it before the app is ready
 Element.Loader.style.display = 'flex';
 
-// data request time
+// This app doesn’t use a server, so it loads instantly
+// We add a 500ms delay to show a loading screen
+// Later, if we connect to a server, loading state will work
 setTimeout(() => {
     Config.TaskList = Storage.GetTasks();
     Todo.RenderTasks(Config.TaskList);
@@ -23,10 +26,10 @@ window.addEventListener('online', (e) => {
     Element.NetworkStatus.style.display = 'none';
 });
 
-// write mode to add new tsk
+// Add "write" class to header to enter add-task mode
+// In this mode, user sees input fields to add tasks
 Element.addTaskBlock.onclick = function () {
     Element.Header.classList.add('write');
-
     Element.Title.focus();
 };
 
@@ -37,13 +40,14 @@ Element.Cancel.onclick = function () {
 
 // Add task to the todo-list
 Element.AddTask.onclick = function () {
+    // AddNewTask() function will add task with the user input 
+    // and return if task added or validation error
     let TaskAdded = Todo.AddNewTask ();
 
+    // if task has been added we will store it to the storage
+    // and show the toast notification to the user too.
     if (TaskAdded) {
-        // save updated tasks to storage
         Storage.SetTasks(Config.TaskList);
-
-        // notification
         Todo.ShowNotification ('Task Created');
     }
 };
@@ -58,6 +62,7 @@ SearchBtn.onclick = function () {
     SearchBox.style.display = 'flex';
 };
 
+// close the search input
 CloseSearch.onclick = function () {
     SearchBtn.style.display = 'block';
     SearchBox.style.display = 'none';
@@ -82,8 +87,7 @@ SearchTxt.onkeyup = function () {
     }
 };
 
-// remove shown add task box, delete modal, search input
-// edit mode 
+// remove add task box, delete modal, search input and edit mode
 // once escape key is pressed
 document.addEventListener('keyup', function (e) {
     if (e.code == 'Escape') {
